@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "outDir": "target/out-tsc/spec",
+    "types": ["jest", "node"]
+  },
+  "files": ["src/JHipsterDotNetCore6/ClientApp/src/polyfills.ts"],
+  "include": [
+    "src/JHipsterDotNetCore6/ClientApp/src/**/*.spec.ts",
+    "src/JHipsterDotNetCore6/ClientApp/src/**/*.d.ts"
+  ]
+}

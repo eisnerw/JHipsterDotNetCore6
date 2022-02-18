@@ -1,0 +1,18 @@
+version: "2"
+services:
+  db:
+    container_name: db
+    image: mongo:latest
+    restart: always
+    healthcheck:
+      test: echo 'db.runCommand({serverStatus:1}).ok' | mongo admin --quiet | grep 1
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+  jhipsterdotnetcore6-app:
+    build:
+      context: ../
+      dockerfile: Dockerfile-Back
+    ports:
+      - 8080:80
