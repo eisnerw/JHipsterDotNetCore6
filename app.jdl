@@ -1,125 +1,41 @@
 entity Category {
-	categoryName String
+  id Long,
+  categoryName String,
+  selected Boolean,
+  notCategorized Boolean,
+  focusType String,
+  focusId String,
+  jsonString String,
+  description String
 }
 
-entity Country {
-	countryName String
+entity Birthday {
+  id Long,
+  lname String,
+  fname String,
+  sign String,
+  dob Instant,
+  isAlive Boolean,
 }
 
-// an ignored comment
-/** not an ignored comment */
-entity Location {
-	streetAddress String,
-	postalCode String,
-	city String,
-	stateProvince String
-}
-
-entity Department {
-	departmentName String required
-}
-
-/**
- * PieceOfWork entity.
- * @author The JHipster team.
- */
-entity PieceOfWork {
-	title String,
-	description String
-}
-
-/**
- * Ruleset entity.
- * @author The JHipster team.
- */
 entity Ruleset {
-	name String,
-	jsonString String
-}
-
-
-/**
- * The Employee entity.
- */
-entity Employee {
-	/**
-	* The firstname attribute.
-	*/
-	firstName String,
-	lastName String,
-	email String,
-	phoneNumber String,
-	hireDate Instant,
-	salary Long,
-	commissionPct Long
-}
-
-entity Job {
-	jobTitle String,
-	minSalary Long,
-	maxSalary Long
-}
-
-entity JobHistory {
-	startDate Instant,
-	endDate Instant,
-    language Language
-}
-
-enum Language {
-    FRENCH, ENGLISH, SPANISH
-}
-
-
-
-relationship OneToOne {
-	Country{category} to Category
-}
-
-relationship OneToOne {
-	Location{country} to Country
-}
-
-relationship OneToOne {
-	Department{location} to Location
-}
-
-// defining multiple OneToMany relationships with comments
-relationship OneToMany {
-	Employee to Job{employee},
-	/**
-	* A relationship
-	*/
-	Department to
-	/**
-	* Another side of the same relationship
-	*/
-	Employee{department}
+  id Long,
+  name String,
+  jsonString String	
 }
 
 relationship ManyToOne {
-	Employee{manager} to Employee
-}
-
-// defining multiple oneToOne relationships
-relationship OneToOne {
-	JobHistory{job} to Job,
-	JobHistory{department} to Department,
-	JobHistory{employee} to Employee
-}
-
-relationship ManyToMany {
-	Job{chore(title)} to PieceOfWork{job}
+  Birthday{categories} to Category
 }
 
 // Set pagination options
-paginate JobHistory, Employee, Job with pagination
+paginate Birthday, Category, Ruleset with infinite-scroll
 
 // Use Data Transfert Objects (DTO)
 dto * with mapstruct
 
 // Set service options to all except few
-service all with serviceImpl except Employee, Job
+service all with serviceImpl
 
 // Set an angular suffix
 // angularSuffix * with mySuffix
