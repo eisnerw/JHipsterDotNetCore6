@@ -194,7 +194,12 @@ npm install -g generator-jhipster
 npm install -g yo
 npm install generator-jhipster@7.1.0
 change <TargetFramework>net5.0 changes to <TargetFramework>net6.0
+
+Generate jdl:
+jhipster import-jdl app.jdl
+
+Reload JHipster:
+npm install -g generator-jhipster
+npm i -g generator-jhipster-dotnetcore
+
 ```
-
-
-
