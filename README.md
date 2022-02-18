@@ -193,5 +193,8 @@ dotnet restore
 npm install -g generator-jhipster
 npm install -g yo
 npm install generator-jhipster@7.1.0
+change <TargetFramework>net5.0 changes to <TargetFramework>net6.0
 ```
-<TargetFramework>net5.0 changes to <TargetFramework>net6.0
+
+
+
